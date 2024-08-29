@@ -1,0 +1,58 @@
+.container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 20px;
+}
+
+.example-header-image {
+  background-image: url("https://material.angular.io/assets/img/examples/shiba1.jpg");
+  background-size: cover;
+}
+
+.product-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+mat-card {
+  width: 20%;
+  margin-bottom: 50px;
+}
+
+mat-card-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.details-btn,
+.add-to-cart-btn {
+  width: 50%;
+  margin: 5px;
+  font-size: 16px;
+}
+
+@media only screen and (max-width: 475px) {
+  .container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  mat-card {
+    width: 100%;
+  }
+}
+
+@media only screen and (min-width: 476px) {
+  mat-card {
+    width: 45%;
+  }
+}
+
+@media only screen and (min-width: 900px) {
+  mat-card {
+    width: 30%;
+  }
+}
