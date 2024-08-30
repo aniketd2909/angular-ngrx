@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, Observable, throwError } from 'rxjs';
+import { Product } from '../app/app.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -12,31 +13,31 @@ export class ProductsService {
 
   constructor(private httpClient: HttpClient) {}
 
-  public getProducts(): Observable<any[]> {
+  public getProducts(): Observable<Product[]> {
     return this.httpClient
-      .get<any[]>(this.PRODUCT_URL)
+      .get<Product[]>(this.PRODUCT_URL)
       .pipe(catchError(this.errorHandler));
   }
 
-  public getProduct(productId: number): Observable<any> {
+  public getProduct(productId: number): Observable<Product> {
     return this.httpClient
-      .get<any>(`${this.PRODUCT_URL}/${productId}`)
+      .get<Product>(`${this.PRODUCT_URL}/${productId}`)
       .pipe(catchError(this.errorHandler));
   }
 
-  public getShoppingCart(): Observable<any[]> {
+  public getShoppingCart(): Observable<Product[]> {
     return this.httpClient
-      .get<any[]>(this.SHOPPING_CART_URL)
+      .get<Product[]>(this.SHOPPING_CART_URL)
       .pipe(catchError(this.errorHandler));
   }
 
-  public addToShoppingCart(product: any) {
+  public addToShoppingCart(product: Product) {
     const headers = {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
     };
 
     return this.httpClient
-      .post<any>(`${this.BASE_URL}/shoppingCart`, product, headers)
+      .post<Product>(`${this.BASE_URL}/shoppingCart`, product, headers)
       .pipe(catchError(this.errorHandler));
   }
 

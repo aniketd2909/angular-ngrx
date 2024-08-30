@@ -1,6 +1,6 @@
 <div class="container">
-  <mat-card class="example-card" *ngFor="let product of products">
-    <img mat-card-image src="{{ product.imgUrl }}" alt="{{ product.title }}" />
+  <mat-card class="example-card" *ngFor="let product of products$ | async">
+    <!-- <img mat-card-image src="{{ product.imgUrl }}" alt="{{ product.title }}" /> -->
     <mat-card-content>
       <h1>{{ product.title }}</h1>
       <h2>{{ product.author }}</h2>
@@ -13,7 +13,15 @@
       </div>
     </mat-card-content>
     <mat-card-actions>
-      <a mat-stroked-button color="primary" class="details-btn">View Details</a>
+      <a
+        mat-stroked-button
+        color="primary"
+        class="details btn"
+        routerLink="/product/{{ product.id }}"
+        routerLinkActive="active"
+        ariaCurrentWhenActive="page"
+        >View Details</a
+      >
       <button mat-flat-button color="primary" class="add-to-cart-btn">
         Add to Cart
       </button>
